@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import show_card, create_card, card_created_response
+from .views import show_card, create_card, card_response
 
 app_name = 'cards'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('show_card/', show_card, name='show_card'),
-    path('create_card/' create_card, name='create_card'),
-    path('thanks/', card_created_response, name='resp'),
+    path('create_card/', create_card, name='create_card'),
+    path('thanks/', card_response, name='resp'),
 ]

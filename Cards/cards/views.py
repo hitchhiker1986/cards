@@ -29,4 +29,5 @@ def create_card(request):
     return render(request, 'create_card.html', {'form': form})
 
 def card_response(request):
-    return render(request, 'response.html')
+    pass
+    #return render(request, 'response.html')
