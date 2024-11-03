@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Card
+from .forms import CardForm # ez az import hianyzott
 import random
 # Create your views here.
 
