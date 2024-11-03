@@ -11,11 +11,10 @@ def show_card(request):
     return render(request, 'show_card.html', {'card': card})
 
 def create_card(request):
-    form = SentenceCardForm(request.POST)
+    form = CardForm(request.POST) #ez hibásan SentenceCardForm volt, de ilyen nincs a forms.py file-ban, ott CardForm -nak hivjak
     if request.method == 'POST':
-
         if form.is_valid():
-            card = SentenceCard()
+            card = Card() #itt is SentenceCard() volt, ilyen nincs, a models.py fileban Card osztaly van
             card.german_sentence = request.POST.get('german_sentence')
             card.hungarian_sentence = request.POST.get('hungarian_sentence')
             card.did_not_knew_counter = 0
