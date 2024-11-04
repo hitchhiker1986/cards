@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Card
 from .forms import CardForm # ez az import hianyzott
+from django.http import HttpResponseRedirect
 import random
 # Create your views here.
 
@@ -29,5 +30,5 @@ def create_card(request):
     return render(request, 'create_card.html', {'form': form})
 
 def card_response(request):
-    pass
+    return render(request, 'thanks.html')
     #return render(request, 'response.html')
