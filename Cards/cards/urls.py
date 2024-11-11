@@ -22,12 +22,12 @@ from .views import show_card, create_card, card_response, sign_up, login_user, h
 app_name = 'cards'
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/login', include('django.contrib.auth.urls')),
     path('accounts/logout', include('django.contrib.auth.urls')),
     path('accounts/profile/', show_card, name='first'),
     path('sign_up', sign_up, name='sign_up'),
-    path('home', home, name='home'),
     path('show_card/', show_card, name='show_card'),
     path('create_card/', create_card, name='create_card'),
     path('thanks/', card_response, name='resp'),

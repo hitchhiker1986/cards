@@ -11,7 +11,6 @@ import random
 # Create your views here.
 
 
-@login_required
 def home(request):
     return render(request, 'home.html')
 
@@ -51,7 +50,7 @@ def change_password(request):
 
 @login_required
 def show_card(request):
-    cards = list(Card.objects.all())
+    cards = list(Card.objects.filter(owner__username=request.user.username))
     card = random.choice(cards)
 
     return render(request, 'show_card.html', {'card': card})
@@ -66,6 +65,7 @@ def create_card(request):
             card.hungarian_sentence = request.POST.get('hungarian_sentence')
             card.did_not_knew_counter = 0
             card.i_knew_counter = 0
+            card.owner = request.user
             card.save()
 
         return HttpResponseRedirect('/thanks')
