@@ -83,9 +83,14 @@ def sign_up(request):
     form = RegistrationForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            password = form.cleaned_data.get('password')
+            user.set_password(password)
+            user.save()
+            authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'],)
             login(request, user)
-            return HttpResponseRedirect('/')
+            request.session['is_connected'] = True
+            return HttpResponseRedirect('create_card')
         else:
             form= RegistrationForm()
 
